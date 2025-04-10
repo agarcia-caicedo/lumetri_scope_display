@@ -386,10 +386,10 @@ def image_to_vectorscope_hls(
 
 
 def process_image(
-    image,
-    conversion_function,
-    input_folder,
-    output_folder,
+    image=r"C:\Users\annoy\Videos\Captures\choke\0016.png",
+    conversion_function=image_to_waveform_rgb,
+    input_folder=r"C:\Users\annoy\Videos\Captures\choke",
+    output_folder=r"C:\Users\annoy\Videos\Captures\choke2",
     output_width=1920,
     output_height=1080,
     replace_existing=False,
@@ -434,14 +434,16 @@ def process_image(
 
 
 def process_folder(
-    conversion_function,
-    input_folder,
-    output_folder,
+    conversion_function=image_to_waveform_rgb,
+    input_folder=r"C:\Users\annoy\Videos\Captures\choke",
+    output_folder=r"C:\Users\annoy\Videos\Captures\choke2",
+    threads=8,
+    replace_existing=False,
     output_width=1920,
     output_height=1080,
-    replace_existing=False,
-    threads=8,
-    **kwargs,
+    style="rgb_sorted",
+    dither_input=True,
+    color_threshold=160,
 ):
     """Process all images in a folder.
 
@@ -510,7 +512,9 @@ def process_folder(
                 output_width=output_width,
                 output_height=output_height,
                 replace_existing=replace_existing,
-                **kwargs,
+                style=style,
+                dither_input=dither_input,
+                color_threshold=color_threshold
             ),
             filenames,
         )
